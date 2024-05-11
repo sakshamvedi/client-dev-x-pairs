@@ -19,6 +19,7 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -48,6 +49,22 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      screens: {
+        '2xl': { 'max': '1535px' },
+        // => @media (max-width: 1535px) { ... }
+
+        'xl': { 'max': '1279px' },
+        // => @media (max-width: 1279px) { ... }
+
+        'desktop': { 'max': '1200px' },
+        // => @media (max-width: 1023px) { ... }
+
+        'md': { 'max': '767px' },
+        // => @media (max-width: 767px) { ... }
+
+        'phone': { 'max': '1000px' },
+        // => @media (max-width: 639px) { ... }
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
@@ -67,6 +84,7 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+
     },
   },
   plugins: [tailwindAnimate],

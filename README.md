@@ -1,10 +1,5 @@
-# React + Vite + TypeScript Template (react-vite-ui)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Dan5py/react-vite-ui/blob/main/LICENSE)
-
-A React + Vite template powered by shadcn/ui.
-
-## 🎉 Features
+## Features
 
 - **React** - A JavaScript library for building user interfaces.
 - **Vite** - A fast, opinionated frontend build tool.
@@ -60,9 +55,7 @@ Follow these steps to get started with the react-vite-ui template:
 
 ## 📂 Project Structure
 
-The project structure follows a standard React application layout:
 
-```python
 react-vite-ui/
   ├── node_modules/      # Project dependencies
   ├── public/            # Public assets
@@ -81,6 +74,4 @@ react-vite-ui/
   └── vite.config.ts     # Vite configuration
 ```
 
-## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.

@@ -76,3 +76,49 @@
     @apply bg-background text-foreground;
   }
 }
+
+body {
+    font-family: "Quicksand", sans-serif;
+    padding-top: 100px;
+}
+
+.main-header-pane{
+background: rgba(2, 8, 23, 0.315);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+position: fixed;
+top: 0;
+width: 100%;
+border: none;
+z-index: 1000;
+}
+.glass-effect{
+  background: rgba(2, 8, 23, 0.315);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(10px);
+}
+
+.main-hero-header{
+  background-image: url('../assets/codeBg.png');
+
+
+}
+
+.box-shadow-type-01{
+box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.bg-01{
+
+  background-image: url('../assets/bg-01.png');
+  
+}
+.bg-02{
+
+  background-image: url('../assets/bg-02.png');
+}
+
+.bg-03{
+  background-image: url('../assets/bg-03.png');
+}
