@@ -1,5 +1,6 @@
 import PostFeed from '@/components/sub-components/PostFeed'
 import { Button } from '@/components/ui/button'
+import { Toaster } from "@/components/ui/toaster"
 import React from 'react'
 import { Link } from "react-router-dom"
 type Props = {}
@@ -40,7 +41,7 @@ export default function Home({ }: Props) {
             </div>
 
             <PostFeed />
-
+            <Toaster />
         </div>
 
 
