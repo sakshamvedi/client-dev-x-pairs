@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation";
 import Room from "./pages/Room";
 import PlayerZone from "./pages/PlayerZone";
 import io from "socket.io-client";
-const socket = io("http://localhost:3001/");
+const socket = io("https://sever-dev-x-pairs-real-time-server-1.onrender.com/");
 import SocketProvider from './atoms/SocketProvider';
 import {
   RecoilRoot,
