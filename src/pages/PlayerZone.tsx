@@ -30,7 +30,7 @@ function PlayerZone() {
     const success = (data) => { { toast.success(data); } }
     const errorModal = (data) => { { toast.error(data); } }
     const { userCode, opponentCode } = location.state;
-    const [value, setValue] = React.useState("");
+    const [value, setValue] = React.useState("return function twosum(nums , target){//write your code here//}");
     const [errors, setError] = React.useState("");
     const [isActive, setIsActive] = React.useState(false);
     const className = isActive ? 'bg-black h-screen w-screen fixed top-0 left-0 ' : '';
@@ -39,7 +39,7 @@ function PlayerZone() {
         alert(data);
     }
     const onChange = React.useCallback((val, viewUpdate) => {
-        console.log('val:', val);
+
         setValue(val);
     }, []);
     React.useEffect(() => {
@@ -130,7 +130,7 @@ function PlayerZone() {
                             height="90vh"
                             extensions={[javascript({ jsx: true })]}
                             theme={vscodeDark}
-                            value={"return function twosum(nums , target){//write your code here//}"}
+
                             onChange={onChange}
                         /></TabsContent>
                         <TabsContent value="result" className='bg-gray-800 p-7 rounded-md roboto-mono text-red-500'>{errors}</TabsContent>
