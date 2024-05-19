@@ -4,7 +4,7 @@ let socket;
 
 export const getSocket = () => {
     if (!socket) {
-        socket = io('https://master--code-pairs.netlify.app/room', { transports: ['websocket'] });
+        socket = io('https://sever-dev-x-pairs-real-time-server-1.onrender.com/', { transports: ['websocket'] });
     }
     return socket;
 };
