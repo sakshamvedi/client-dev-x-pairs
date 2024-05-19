@@ -127,7 +127,7 @@ function PlayerZone() {
                             <TabsTrigger value="result" className='w-1/2'> <ResumeIcon className='mx-2 text-red-200' /> Results</TabsTrigger>
                         </TabsList>
                         <TabsContent value="code"> <CodeMirror value={value}
-                            height="90vh"
+                            height="91vh"
                             extensions={[javascript({ jsx: true })]}
                             theme={vscodeDark}
 
