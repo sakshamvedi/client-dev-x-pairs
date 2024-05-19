@@ -99,6 +99,15 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(3px);
 -webkit-backdrop-filter: blur(10px);
 }
+.glass-effect--less-dark{
+  /* From https://css.glass */
+background: rgba(7, 7, 7, 0.8);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(5px);
+box-shadow: rgba(255, 251, 6, 0.459) 0px 50px 100px -20px, rgba(233, 245, 4, 0.3) 0px 30px 60px -30px;
+}
 
 .main-hero-header{
   background-image: url('../assets/codeBg.png');
@@ -121,4 +130,47 @@ box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
 .bg-03{
   background-image: url('../assets/bg-03.png');
+}
+
+.bg-color--leetcode{
+  background-color: #262626;
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+.stick{
+  position: absolute;
+  top:  80px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gray;
+  border-radius: 10px; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
+.roboto-mono {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
 }
