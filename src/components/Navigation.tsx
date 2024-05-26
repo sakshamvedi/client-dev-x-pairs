@@ -16,6 +16,7 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import NavBarValues from './data/NavBar';
+import GoogleSignInButton from './sub-components/GoogleSignInButton';
 type Props = {}
 
 function Navigation({ }: Props) {
@@ -33,8 +34,8 @@ function Navigation({ }: Props) {
                     <p className='font-bold text-lg'>Code-Pairs</p>
                 </div>
 
-                <div className="flex justify-center item-center gap-4 phone:hidden">
-                    <SigninButton />
+                <div className="flex justify-center item-center  phone:hidden">
+                    <GoogleSignInButton />
                 </div>
 
                 <div className='phone-menu hidden phone:block'>
@@ -45,7 +46,7 @@ function Navigation({ }: Props) {
                                 {NavBarValues.items.map((item, index) => (
                                     <Button key={index} className='mr-7' variant={'outline'}> <Link to={item.path}>{item.pathname}</Link></Button>
                                 ))}
-                                <SigninButton />
+                                <GoogleSignInButton />
                             </DrawerHeader>
                         </DrawerContent>
                     </Drawer>
