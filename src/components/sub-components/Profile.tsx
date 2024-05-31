@@ -22,6 +22,7 @@ function Profile({ }: Props) {
         "displayName": "User",
         "displayPicture": "dummy.png",
         "email": "S",
+        "uid": 'we',
     };
     if (localStorage.getItem("devxpairs") != null) {
         userData = JSON.parse(localStorage.getItem("devxpairs"));

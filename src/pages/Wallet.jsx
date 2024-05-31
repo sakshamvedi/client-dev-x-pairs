@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import React from 'react'
 import axios from 'axios'
+import { ArrowDownToDotIcon, DollarSign, LucideWallet, Monitor, WalletIcon } from 'lucide-react';
+import { useSetRecoilState } from 'recoil';
 
 function Wallet() {
     const amount = 500;
@@ -19,6 +21,7 @@ function Wallet() {
 
     async function RazorpayPaymentInteg() {
         let data = '';
+
         let config = {
             method: 'get',
             body: JSON.stringify({
@@ -65,9 +68,33 @@ function Wallet() {
                         }
                     );
                     const jsonRes = await validateRes.json();
-                    console.log(jsonRes);
+
                     if (jsonRes.msg === "success") {
 
+                        let data = {
+                            userid: userInfo.uid,
+                            balance: "50",
+                        };
+                        console.log(data);
+
+                        let config = {
+                            method: 'post',
+                            maxBodyLength: Infinity,
+                            url: 'http://localhost:3001/walletModel',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            data: data
+                        };
+
+                        axios.request(config)
+                            .then((response) => {
+                                console.log(JSON.stringify(response.data));
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
+                        window.location.reload();
                     } else {
                         alert("Payment Failed");
                     }
@@ -106,8 +133,7 @@ function Wallet() {
 
     return (
         <>
-            <Button onClick={RazorpayPaymentInteg}>Pay Now</Button>
-
+            <Button onClick={RazorpayPaymentInteg} className='bg-green-800 text-white hover:bg-green-900'> <WalletIcon height={"20px"} className='mx-2' color='white' /> Add Money </Button>
 
         </>
     )

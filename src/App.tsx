@@ -17,6 +17,7 @@ import {
   useRecoilValue,
 } from 'recoil';
 import Wallet from "./pages/Wallet";
+import WalletDashBoard from "./pages/WalletDashBoard";
 function App() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
 
@@ -29,7 +30,7 @@ function App() {
           <Route path="/" element={[<Navigation />, <Home />]} />
           <Route path="/room" element={[<Navigation />, <Room />]} />
           <Route path="/playerzone" element={[<Navigation />, <PlayerZone />]} />
-          <Route path="/wallet" element={[<Navigation />, <Wallet />]} />
+          <Route path="/wallet" element={[<Navigation />, <WalletDashBoard />]} />
 
         </Routes>
 
