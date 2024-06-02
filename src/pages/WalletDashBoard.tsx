@@ -3,8 +3,9 @@ import Wallet from './Wallet';
 import { Button } from '@/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import Carousal from '@/components/sub-components/Carousal';
-import { IndianRupee, WalletIcon } from 'lucide-react';
+import { ArrowUpNarrowWide, IndianRupee, PlusIcon, WalletIcon } from 'lucide-react';
 import axios from 'axios';
+
 type Props = {}
 function WalletDashBoard({ }: Props) {
     const userInfoStorage = localStorage.getItem('userInfo');
@@ -19,16 +20,17 @@ function WalletDashBoard({ }: Props) {
     }
     const [userInfo, setUserInfo] = React.useState(userData);
     const [userBalance, setUserBalance] = React.useState(0);
+    const [userTransactions, setUserTransactions] = React.useState(0);
     console.log(userInfo);
     useEffect(() => {
         let data = {
-            "uid": userInfo.uid
+            "uid": userInfo.uid,
         };
         console.log(data);
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://localhost:3001/walletmoney',
+            url: 'https://sever-dev-x-pairs-4.onrender.com/walletmoney',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -39,6 +41,7 @@ function WalletDashBoard({ }: Props) {
             .then((response) => {
                 console.log(JSON.stringify(response.data.balance));
                 setUserBalance(response.data.balance);
+                setUserTransactions(response.data.count);
             })
             .catch((error) => {
                 console.log(error);
@@ -67,11 +70,18 @@ function WalletDashBoard({ }: Props) {
             <div className=' border border-white-100 m-12 px-7'>
 
             </div>
-            <div className='w-full m-4 px-7'>
+            <div className='w-full m-4 px-7 flex justify-center gap-12'>
                 <div className='wallet-balance'>
                     <p className='text-md text-gray-200 flex gap-2 '> Wallet Balance</p>
                     <p className='text-4xl font-bold my-2 flex items-center gap-2 roboto-mono' > <IndianRupee></IndianRupee>{userBalance}</p>
                 </div>
+                <div className='wallet-balance'>
+                    <p className='text-md text-green-300 flex gap-2'> Funds Added <ArrowUpNarrowWide /></p>
+                    <p className='text-4xl font-bold my-2 flex items-center gap-2 roboto-mono' > <PlusIcon />{userTransactions}</p>
+                </div>
+            </div>
+            <div className=' border border-white-100 m-12 px-7'>
+
             </div>
 
         </>

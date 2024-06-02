@@ -30,7 +30,7 @@ function Wallet() {
                 receipt: receiptId,
             }),
             maxBodyLength: Infinity,
-            url: 'http://localhost:3001/payment',
+            url: 'https://sever-dev-x-pairs-4.onrender.com/payment',
             headers: {},
             data: data
         };
@@ -58,7 +58,7 @@ function Wallet() {
                     };
 
                     const validateRes = await fetch(
-                        "http://localhost:3001/validate",
+                        "https://sever-dev-x-pairs-4.onrender.com/validate",
                         {
                             method: "post",
                             body: JSON.stringify(body),
@@ -74,13 +74,14 @@ function Wallet() {
                         let data = {
                             userid: userInfo.uid,
                             balance: "50",
+                            count: "1",
                         };
                         console.log(data);
 
                         let config = {
                             method: 'post',
                             maxBodyLength: Infinity,
-                            url: 'http://localhost:3001/walletModel',
+                            url: 'https://sever-dev-x-pairs-4.onrender.com/walletModel',
                             headers: {
                                 'Content-Type': 'application/json'
                             },

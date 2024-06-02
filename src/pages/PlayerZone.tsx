@@ -22,6 +22,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import axios from 'axios';
 
 
 function PlayerZone() {
@@ -35,6 +36,22 @@ function PlayerZone() {
     const [isActive, setIsActive] = React.useState(false);
     const className = isActive ? 'bg-black h-screen w-screen fixed top-0 left-0 ' : '';
     const [isOpen, setIsOpen] = React.useState(false);
+    const [userJoined, setUserJoined] = React.useState(false);
+    const [opponentSocketName, setOpponentSocketName] = React.useState('');
+    const [opponentUid, setOpponentUid] = React.useState('');
+
+    let userData = {
+        "displayName": "User",
+        "displayPicture": "dummy.png",
+        "email": "S",
+        "uid": "we",
+    };
+    if (localStorage.getItem("devxpairs") != null) {
+        userData = JSON.parse(localStorage.getItem("devxpairs"));
+    }
+    const [userInfo, setUserInfo] = React.useState(userData);
+
+
     function useCustomToaters(data) {
         alert(data);
     }
@@ -45,14 +62,47 @@ function PlayerZone() {
     React.useEffect(() => {
         socket.on('checkstatus', (data) => {
             setIsActive(true);
-            errorModal("Sorry You Losed !!!! :( ")
-
+            errorModal("Sorry You Losed !!!! :( ");
 
         });
         return () => {
             socket.off('connection');
         };
     }, []);
+    socket.emit('userJoined', { opponentCode });
+    socket.on('request', (data) => {
+        setUserJoined(true);
+    }
+    );
+    React.useEffect(() => {
+
+        let data = JSON.stringify({
+            "socketid": opponentCode
+        });
+
+        let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: 'https://sever-dev-x-pairs-4.onrender.com/getSocketUserInfo',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setOpponentUid(response.data.userid);
+                setOpponentSocketName(response.data.username);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    }, [userJoined]);
+
+
 
 
     function runcode() {
@@ -77,7 +127,30 @@ function PlayerZone() {
             if (flag) {
                 const winner = "hey another one is winner"
                 socket.emit('winner', { winner, opponentCode });
-                success("All Test Cases is Passed");
+                success("All Test Cases is Passed , You are the Winner");
+                let data = JSON.stringify({
+                    "from": opponentUid,
+                    "to": userInfo.uid,
+                    "amount": "50"
+                });
+
+                let config = {
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url: 'https://sever-dev-x-pairs-4.onrender.com/transfermoney',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
+                };
+
+                axios.request(config)
+                    .then((response) => {
+                        console.log(JSON.stringify(response.data));
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
             else {
                 errorModal("Sorry Test Case Failed");
@@ -92,9 +165,6 @@ function PlayerZone() {
     return (
 
         <>
-
-
-
             <div className="player-zone-header flex justify-end items-center p-2 bg-color--gray">
                 <button onClick={runcode} className='bg-gray-700 text-white stick  p-2 rounded-md flex gap-2'>
                     <Play color='green' />
@@ -104,19 +174,20 @@ function PlayerZone() {
             <div className='player-zone-container flex justify-center'>
                 <div className='question-side-header w-1/2 '>
                     <div className="problem-page rounded-md border-solid-white p-7 m-4  bg-color--leetcode">
-                        <h1 className='text-2xl tracking-normal roboto-mono'>1.Two Sum</h1>
+                        <h1 className='text-2xl tracking-normal roboto-mono'>1.Sum Of Digits of Array</h1>
                         <div className='badge my-4 flex gap-2'>
                             <Badge className='bg-green-200'>Easy</Badge>
                             <Badge className='bg-yellow-100'>Two Pointers , Maths </Badge>
+                            <Badge className='bg-red-100'>{opponentSocketName}</Badge>
                         </div>
                         <div className='problem-description'>
-                            <p className='roboto-mono text-sm my-7' > Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.You may assume that each input would have exactly one solution, and you may not use the same element twice.You can return the answer in any order.</p>
+                            <p className='roboto-mono text-sm my-7' > Given an array of integers nums return the sum of all digits present in the Array Nums.</p>
                         </div>
                         <div className='problem-input roboto-mono bg-black p-7 rounded-md'>
                             <h2 className='text-lg font-bold my-2 text-yellow-300'>Input</h2>
-                            <p className='roboto-mono text-sm mx-2'>nums = [2,7,11,15], target = 9</p>
+                            <p className='roboto-mono text-sm mx-2'>nums = [2,7,11,15]</p>
                             <h2 className='text-lg font-bold my-2 text-green-200'>Output</h2>
-                            <p className='roboto-mono text-sm mx-2'>[0,1]</p>
+                            <p className='roboto-mono text-sm mx-2'>[35]</p>
                         </div>
                     </div>
                 </div>
