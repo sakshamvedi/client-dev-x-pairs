@@ -31,7 +31,7 @@ function Navigation({ }: Props) {
                 </div>
                 <div className="logo h-16 rounded flex justify-center items-center gap-4">
                     <img src={logo} className='h-11' ></img>
-                    <p className='font-bold text-lg'>Code-Pairs</p>
+                    <p className='font-bold text-lg'>Code-Pair</p>
                 </div>
 
                 <div className="flex justify-center item-center  phone:hidden">

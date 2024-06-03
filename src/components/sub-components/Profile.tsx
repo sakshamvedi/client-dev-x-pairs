@@ -14,6 +14,7 @@ import { signOut } from 'firebase/auth';
 import { Link, To } from 'react-router-dom';
 
 import { auth } from '@/config/firebase.config';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 type Props = {}
 
@@ -41,7 +42,7 @@ function Profile({ }: Props) {
     return (
         <>
             <DropdownMenu>
-                <DropdownMenuTrigger><Button className='rounded-full text-xl font-bold bg-pink-200'>{profile.displayName.slice(0, 1)}</Button></DropdownMenuTrigger>
+                <DropdownMenuTrigger><Button className='rounded-full text-xl font-bold border-color-red flex gap-7 ' variant='outline'>{profile.displayName.slice(0, 1)} <HamburgerMenuIcon className='font-bold'></HamburgerMenuIcon></Button> </DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
