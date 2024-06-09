@@ -42,7 +42,7 @@ function Profile({ }: Props) {
     return (
         <>
             <DropdownMenu>
-                <DropdownMenuTrigger><Button className='rounded-full text-xl font-bold border-color-red flex gap-7 ' variant='outline'>{profile.displayName.slice(0, 1)} <HamburgerMenuIcon className='font-bold'></HamburgerMenuIcon></Button> </DropdownMenuTrigger>
+                <DropdownMenuTrigger><Button className='rounded-full text-xl font-bold border-color-red flex gap-7 ' variant='outline'>{profile.displayName.slice(0, 1)} <HamburgerMenuIcon className='font-bold '></HamburgerMenuIcon></Button> </DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
