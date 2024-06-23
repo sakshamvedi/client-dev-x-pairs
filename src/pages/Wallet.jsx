@@ -21,7 +21,6 @@ function Wallet() {
 
     async function RazorpayPaymentInteg() {
         let data = '';
-
         let config = {
             method: 'get',
             body: JSON.stringify({
